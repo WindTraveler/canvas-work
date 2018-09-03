@@ -59,3 +59,9 @@ typings/
 
 # next.js build output
 .next
+
+# 零碎的代码实现
+chore/
+
+# idea
+.idea/
