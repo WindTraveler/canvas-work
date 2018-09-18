@@ -5,4 +5,9 @@
 
 html, body {
     height: 100%;
+    background-color: #ddd;
+}
+
+canvas {
+    background-color: #fff;
 }

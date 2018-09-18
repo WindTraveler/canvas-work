@@ -1,3 +1,5 @@
 import './index.css';
 
-console.log('done');
+// import '../chore/cp01-02'
+
+import './works/clock';
