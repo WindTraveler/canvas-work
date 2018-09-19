@@ -4,6 +4,7 @@ const CENTER_RADIUS = 3;
 const HOUR_RADIUS = 35;
 const MIN_RADIUS = 50;
 const SEC_RADIUS = 65;
+const FONT_SIZE = 15;
 const canvas = document.getElementById('canvas');
 const context = canvas.getContext('2d');
 
@@ -49,10 +50,12 @@ function drawHand(value, handRadius) {
 function drawNums() {
     let nums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
     let angle;
+    let numWidth;
     nums.forEach(n => {
         angle = (n - 3) * Math.PI / 6;
-        context.fillText(n, canvas.width / 2 + Math.cos(angle) * TEXT_RADIUS,
-                            canvas.height / 2 + Math.sin(angle) * TEXT_RADIUS);
+        numWidth = context.measureText(n).width;
+        context.fillText(n, canvas.width / 2 + Math.cos(angle) * TEXT_RADIUS - numWidth / 2,
+                            canvas.height / 2 + Math.sin(angle) * TEXT_RADIUS + FONT_SIZE / 3);
     });
 }
 
@@ -66,4 +69,5 @@ function drawClock() {
     drawNums();
 }
 
+context.font = `${FONT_SIZE}px serif`;
 setInterval(drawClock, 1000);
