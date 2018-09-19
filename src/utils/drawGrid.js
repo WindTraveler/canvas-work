@@ -1,4 +1,4 @@
-export default function drawGrid(context, color, stepx, stepy) {
+export default function drawGrid(context, color = 'lightgray', stepx = 10, stepy = 10) {
     context.save();
 
     context.strokeStyle = color;
