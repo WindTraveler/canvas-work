@@ -3,6 +3,8 @@ const canvas = document.getElementById('canvas');
 const context = canvas.getContext('2d');
 import drawBackground from '../utils/drawGrid';
 
+let play = true;
+
 for (let i = 0; i < 50; i++) {
     balls[i] = {
         x: canvas.width / 2,
@@ -19,17 +21,19 @@ for (let i = 0; i < 50; i++) {
 
 
 function drawBalls() {
-    context.clearRect(0, 0, canvas.width, canvas.height);
-    drawBackground(context);
+    if (play) {
+        context.clearRect(0, 0, canvas.width, canvas.height);
+        drawBackground(context);
 
-    balls.forEach(ball => {
-        context.beginPath();
-        context.arc(ball.x, ball.y, ball.radius, 0, 2 * Math.PI);
-        context.fillStyle = ball.color;
-        context.fill();
+        balls.forEach(ball => {
+            context.beginPath();
+            context.arc(ball.x, ball.y, ball.radius, 0, 2 * Math.PI);
+            context.fillStyle = ball.color;
+            context.fill();
 
-        moveBall(ball);
-    });
+            moveBall(ball);
+        });
+    }
 
     requestAnimationFrame(drawBalls);
 }
@@ -50,3 +54,16 @@ function moveBall(ball) {
 }
 
 requestAnimationFrame(drawBalls);
+
+function* playState() {
+    while (true) {
+        yield false;
+        yield true;
+    }
+}
+
+let state = playState();
+
+canvas.addEventListener('click', function () {
+    play = state.next().value;
+})
