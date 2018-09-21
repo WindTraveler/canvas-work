@@ -16,6 +16,11 @@ module.exports = {
         path: config.build.dist,
         filename: "[name].bundle.js"
     },
+    resolve: {
+        alias: {
+            Utils: path.join(__dirname, '../src/utils/')
+        }
+    },
     module: {
         rules: [
             {

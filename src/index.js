@@ -1,7 +1,9 @@
 import './index.css';
 
-// import '../chore/cp01-02'
+import '../chore'
 
 // import './works/clock';
 
-import './works/balls';
+// import './works/balls';
+
+// import './works/ring';
